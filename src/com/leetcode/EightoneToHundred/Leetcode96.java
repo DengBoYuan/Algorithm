@@ -1,5 +1,7 @@
 package com.leetcode.EightoneToHundred;
 
+
+//动态规划
 public class Leetcode96 {
     public int numTrees(int n) {
         int[] dp = new int[20];
