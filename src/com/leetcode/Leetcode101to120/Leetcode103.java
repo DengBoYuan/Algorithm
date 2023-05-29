@@ -7,6 +7,9 @@ import java.util.*;
 /*
     思路：同102，使用队列进行层次遍历，但要在偶数层将
     列表翻转，使用Collections.reverse（）方法
+
+    法二：使用Deque接口可以实现双向队列，可以从队头或
+    队尾加数，所以在偶数层向队头加数，奇数层向队尾家属
  */
 public class Leetcode103 {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
