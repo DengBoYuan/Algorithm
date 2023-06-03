@@ -24,7 +24,6 @@ public class Leetcode105 {
                 root.right = buildTree(Arrays.copyOfRange(preorder, i+1, len), Arrays.copyOfRange(inorder, i+1, len));
                 break;
             }
-
         }
         return root;
     }
