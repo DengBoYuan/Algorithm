@@ -1,10 +1,14 @@
 package com.leetcode.Leetcode121to140;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
+/*
+    思路：没被包围的o，一定是在边缘或者与在边缘的o相连
+    所以先找出边缘的o，记录索引，然后使用广度优先搜索，
+    将与边缘o和与边缘o相连的o置为a，最后将a全部变为o，
+    其他的都是x
+ */
 public class Leetcode130 {
     public void solve(char[][] board) {
         int m = board.length;
