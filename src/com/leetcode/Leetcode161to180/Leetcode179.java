@@ -1,36 +1,32 @@
 package com.leetcode.Leetcode161to180;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+/*
+    思路：首先将数组全部变为字符串，然后进行排序，排序规则
+    为组成的数字最大，如a，b，若ab>ba，则a排在b前面，排序
+    通过比较器完成，使用Array.sort的比较器制定规则进行排序
+    最后去除前导0，然后返回字符串
+ */
 public class Leetcode179 {
     public String largestNumber(int[] nums) {
+        StringBuffer sb = new StringBuffer();
         int n = nums.length;
-        // 转换成包装类型，以便传入 Comparator 对象（此处为 lambda 表达式）
-        Integer[] numsArr = new Integer[n];
+        String[] ss = new String[n];
         for (int i = 0; i < n; i++) {
-            numsArr[i] = nums[i];
+            ss[i] = Integer.toString(nums[i]);
         }
-
-        Arrays.sort(numsArr, (x, y) -> {
-            long sx = 10, sy = 10;
-            while (sx <= x) {
-                sx *= 10;
-            }
-            while (sy <= y) {
-                sy *= 10;
-            }
-            return (int) (-sy * x - y + sx * y + x);
+        Arrays.sort(ss, (a, b) -> {
+            String stra = a + b, strb = b + a;
+            return strb.compareTo(stra);
         });
-
-        if (numsArr[0] == 0) {
-            return "0";
+        for (int i = 0; i < n; i++) {
+            sb.append(ss[i]);
         }
-        StringBuilder ret = new StringBuilder();
-        for (int num : numsArr) {
-            ret.append(num);
+        int k = 0;
+        while (k < n-1 && ss[k].equals("0")) {
+            k++;
         }
-        return ret.toString();
+        return sb.substring(k);
     }
 }
