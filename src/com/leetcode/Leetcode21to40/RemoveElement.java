@@ -2,25 +2,21 @@ package com.leetcode.Leetcode21to40;
 
 public class RemoveElement {
     public int removeElement(int[] nums, int val) {
-        int res = nums.length;
-        int head = 0, tail = nums.length - 1;
-        while (head <= nums.length - 1) {
-            if (nums[head] == val) {
-                while (head < tail) {
-                    if (nums[tail] != val) {
-                        nums[head] = nums[tail];
-                        break;
-                    } else {
-                        tail--;
-                    }
-                }
-                head++;
-                tail--;
-                res--;
+        if (nums.length == 0) {
+            return 0;
+        }
+        int i = 0, j = nums.length-1;
+        while (i < j) {
+            if (nums[i] == val) {
+                nums[i] = nums[j];
+                j--;
             } else {
-                head++;
+                i++;
             }
         }
-        return res;
+        if (nums[i] == val) {
+            return i;
+        }
+        return i+1;
     }
 }

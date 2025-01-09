@@ -7,15 +7,26 @@ package com.leetcode.Leetcode121to140;
     新res，否则不动
  */
 public class Leetcode121 {
+//    public int maxProfit(int[] prices) {
+//        int res = 0;
+//        int buy = prices[0];
+//        for (int i = 1; i < prices.length; i++) {
+//            if (prices[i] < buy) {
+//                buy = prices[i];
+//            } else {
+//                res = Math.max(res, prices[i] - buy);
+//            }
+//        }
+//        return res;
+//    }
     public int maxProfit(int[] prices) {
         int res = 0;
-        int buy = prices[0];
-        for (int i = 1; i < prices.length; i++) {
-            if (prices[i] < buy) {
-                buy = prices[i];
-            } else {
-                res = Math.max(res, prices[i] - buy);
-            }
+        int maxPrice = Integer.MIN_VALUE;
+        int profit = 0;
+        for (int i = prices.length-1; i >= 0; i--) {
+            maxPrice = Math.max(maxPrice, prices[i]);
+            profit = maxPrice - prices[i];
+            res = Math.max(res, profit);
         }
         return res;
     }

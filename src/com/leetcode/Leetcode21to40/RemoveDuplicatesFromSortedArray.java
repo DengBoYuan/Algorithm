@@ -2,15 +2,13 @@ package com.leetcode.Leetcode21to40;
 
 public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
-        int temp = nums[0];
-        int res = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != temp) {
-                temp = nums[i];
-                nums[res] = nums[i];
-                res++;
+        int i = 0;
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[i] != nums[j]) {
+                i++;
+                nums[i] = nums[j];
             }
         }
-        return res;
+        return i+1;
     }
 }

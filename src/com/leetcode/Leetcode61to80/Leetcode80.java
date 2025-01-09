@@ -5,21 +5,19 @@ package com.leetcode.Leetcode61to80;
  */
 public class Leetcode80 {
     public int removeDuplicates(int[] nums) {
-        int len = nums.length;
-        int m = 0, n = 0, flag = 0;
-        int pre = nums[0];
-        while (n < len) {
-            if (nums[n] == pre) {
-                flag++;
-            } else {
-                flag = 1;
+        int slow = 0;
+        int count = 1;
+        for (int fast = 1; fast < nums.length; fast++) {
+            if (nums[slow] != nums[fast]) {
+                count = 1;
+                slow++;
+                nums[slow] = nums[fast];
+            } else if (count == 1) {
+                count++;
+                slow++;
+                nums[slow] = nums[fast];
             }
-            if (flag <= 2) {
-                nums[m] = nums[n];
-            }
-            pre = nums[n];
-            n++;
         }
-        return m+1;
+        return slow+1;
     }
 }

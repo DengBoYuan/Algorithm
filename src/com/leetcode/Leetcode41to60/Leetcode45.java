@@ -35,11 +35,14 @@ public class Leetcode45 {
             return 0;
         }
         int res = 0;
-        int end = 0;
         int maxFar = 0;
+        int end = 0;
         for (int i = 0; i < nums.length; i++) {
-            maxFar = Math.max(maxFar, i + nums[i]);
-            if (end == i) {
+            maxFar = Math.max(maxFar, i+nums[i]);
+            if (maxFar >= nums.length-1) {
+                return res+1;
+            }
+            if (i == end) {
                 res++;
                 end = maxFar;
             }
